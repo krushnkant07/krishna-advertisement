@@ -7,22 +7,28 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        .gallery-img { 
-            transition: all 0.4s ease; 
-            height: 300px;
+         .gallery-img { 
+            transition: all 0.5s ease-in-out; 
+            /* Height ko 300px se badha kar 450px ya auto kar sakte hain */
+            height: 400px; 
             width: 100%;
-            object-fit: cover;
+            /* 'cover' se image stretch nahi hogi aur pura box bhari dikhegi */
+            object-fit: cover; 
+            object-position: center;
+            display: block;
         }
+
+        /* Image par hover karne par wo thodi zoom hogi */
         .img-container:hover .gallery-img { 
-            transform: scale(1.1); 
+            transform: scale(1.08); 
         }
-        .overlay {
-            background: rgba(0,0,0,0.6);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .img-container:hover .overlay {
-            opacity: 1;
+
+        /* Container styling */
+        .img-container {
+            overflow: hidden;
+            border-radius: 20px;
+            background-color: #000; /* Loading ke waqt background black dikhega */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
     </style>
 </head>

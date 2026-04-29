@@ -3,250 +3,294 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KRISHNA ADS | Full Marketing Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Krishna Advertisement - Full Packages</title>
     <style>
-        .details { display: none; transition: all 0.3s ease; }
+        .details { display: none; }
         .details.active { display: block; }
-        .pkg-card { cursor: pointer; transition: transform 0.2s; }
-        .pkg-card:hover { transform: scale(1.02); }
+        .pkg-card { cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+        .pkg-card:active { transform: scale(0.98); }
+        #morePackages.hidden { display: none; }
     </style>
 </head>
 <body class="bg-gray-50 font-sans">
 
-<header class="bg-white shadow-lg py-4 border-b-4 border-orange-500 sticky top-0 z-50">  
-    <div class="container mx-auto px-4 flex justify-between items-center">  
-        <div class="flex items-center gap-3">  
-            <div class="w-12 h-12 md:w-16 md:h-16 rounded-full border-2 border-orange-500 overflow-hidden shadow-md">  
-                <img src="images/image_1776123009535.jpg" alt="Krishna" class="w-full h-full object-cover">  
-            </div>  
-            <div class="text-left">  
-                <h1 class="text-xl md:text-2xl font-black text-orange-600 tracking-tight leading-none uppercase">Krishna Advertisement</h1> [cite: 1, 3]
-                <p class="text-gray-500 text-[10px] md:text-xs font-bold">Owner: Krushn Kant (KKR)</p> [cite: 5]
-            </div>  
-        </div>  
-        
-        <nav class="hidden md:flex gap-6">  
-            <a href="about.html" class="text-gray-700 font-bold hover:text-orange-600 transition">About</a>  
-            <a href="profile.html" class="text-gray-700 font-bold hover:text-orange-600 transition">Profile</a>  
-            <a href="gallery.html" class="text-gray-700 font-bold hover:text-orange-600 transition">Gallery</a>  
-        </nav>
+    <header class="bg-white shadow-lg py-4 border-b-4 border-orange-500 sticky top-0 z-50">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 md:w-16 md:h-16 rounded-full border-2 border-orange-500 overflow-hidden shadow-md">
+                    <img src="images/image_1776123009535.jpg" alt="Krishna" class="w-full h-full object-cover">
+                </div>
+                <div class="text-left">
+                    <h1 class="text-lg md:text-2xl font-black text-orange-600 tracking-tight leading-none uppercase">Krishna Ads</h1>
+                    <p class="text-gray-500 text-[10px] md:text-xs font-bold">Owner: Krushn Kant (KKR)</p>
+                </div>
+            </div>
+            <div class="flex gap-2 md:gap-4">
+                <a href="about.html" class="text-gray-700 font-bold text-xs md:text-sm hover:text-orange-600 self-center">About</a>
+                <a href="profile.html" class="text-gray-700 font-bold text-xs md:text-sm hover:text-orange-600 self-center">Profile</a>
+                <a href="gallery.html" class="bg-orange-600 text-white px-3 py-2 rounded-xl font-bold text-xs md:text-sm shadow-md flex items-center gap-2">
+                    <i class="fas fa-images"></i> Gallery
+                </a>
+            </div>
+        </div>
+    </header>
 
-        <div class="flex gap-2">  
-            <a href="https://wa.me/917862043514" class="bg-green-600 text-white px-4 py-2 rounded-full font-bold text-xs md:text-sm shadow-md flex items-center gap-2">  
-                <i class="fab fa-whatsapp"></i> Chat
-            </a>  
-        </div>  
-    </div>  
-</header>
+    <main class="container mx-auto px-4 py-10">
+        <h2 class="text-3xl font-bold text-center mb-10 text-gray-800">Advertising Packages 💼</h2>
 
-<main class="container mx-auto px-4 py-10">  
-    <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-black text-gray-800">Our Advertising Packages 💼</h2> [cite: 9]
-        <p class="text-gray-600 mt-3 font-medium">We specialize in Physical & Digital Marketing focused on Brand Growth in Borsad & Anand.</p> [cite: 4]
-    </div>
-      
-    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">  
-          
-        <div class="pkg-card bg-blue-600 text-white p-6 rounded-3xl shadow-xl border-b-8 border-blue-800" onclick="togglePkg('pkg1')">  
-            <div class="flex justify-between items-center">  
-                <span class="text-3xl font-bold">₹4,000</span> [cite: 10]
-                <i class="fas fa-paper-plane text-2xl"></i>  
-            </div>  
-            <p class="mt-2 text-blue-100 font-bold italic">1. Starter Pack</p> [cite: 10]
-            <div id="pkg1" class="details mt-4 bg-white text-gray-800 p-5 rounded-2xl shadow-inner active">  
-                <ul class="space-y-2 text-sm md:text-base">  
-                    <li>📄 2,000 Pamphlets (Back, One Color)</li> [cite: 11]
-                    <li>🏷️ 5 Stickers (12x18, Full Color)</li> [cite: 12]
-                    <li>🛺 7 Rickshaw Banners (2x2 ft, Full Color)</li> [cite: 13]
-                    <li class="text-blue-600 font-bold">📸 Photo/Video Proof Included</li> [cite: 14]
-                </ul>  
-                <a href="https://wa.me/917862043514" class="block mt-4 text-center bg-blue-600 text-white py-3 rounded-xl font-bold">Order on WhatsApp</a>  
-            </div>  
-        </div>  
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 
-        <div class="pkg-card bg-green-600 text-white p-6 rounded-3xl shadow-xl border-b-8 border-green-800" onclick="togglePkg('pkg2')">  
-            <div class="flex justify-between items-center">  
-                <span class="text-3xl font-bold">₹7,900</span> [cite: 16]
-                <i class="fas fa-bullhorn text-2xl"></i>  
-            </div>  
-            <p class="mt-2 text-green-100 font-bold italic">2. Growing Pack (Best Value)</p> [cite: 16]
-            <div id="pkg2" class="details mt-4 bg-white text-gray-800 p-5 rounded-2xl shadow-inner">  
-                <ul class="space-y-2 text-sm md:text-base">  
-                    <li>📄 3,000 Pamphlets (Full Color, Glossy 70-80 GSM)</li> [cite: 17]
-                    <li>🏷️ 15 Stickers (12x18 Full Color)</li> [cite: 18]
-                    <li>🛺 12 Rickshaw Banners (2x2 or 2x3 ft - Full Color)</li> [cite: 19]
-                    <li>🚩 1 Flex Banner (6x3 ft, Full Color)</li> [cite: 20]
-                    <li class="text-green-600 font-bold">📸 Photo/Video Proof Included</li> [cite: 21]
-                </ul>  
-                <a href="https://wa.me/917862043514" class="block mt-4 text-center bg-green-600 text-white py-3 rounded-xl font-bold">Order on WhatsApp</a>  
-            </div>  
-        </div>  
-
-        <div class="pkg-card bg-purple-600 text-white p-6 rounded-3xl shadow-xl border-b-8 border-purple-800" onclick="togglePkg('pkg3')">  
-            <div class="flex justify-between items-center">  
-                <span class="text-3xl font-bold">₹14,900</span> [cite: 24]
-                <i class="fas fa-star text-2xl"></i>  
-            </div>  
-            <p class="mt-2 text-purple-100 font-bold italic">3. Professional Pack (Most Popular)</p> [cite: 24]
-            <div id="pkg3" class="details mt-4 bg-white text-gray-800 p-5 rounded-2xl shadow-inner">  
-                <ul class="space-y-2 text-sm md:text-base">  
-                    <li>📄 6,000 Pamphlets (Full Color, Glossy 70-80 GSM)</li> [cite: 25]
-                    <li>🏷️ 30 Stickers (12x18 inch, Full Color)</li> [cite: 25]
-                    <li>🛺 30 Rickshaw Banners (2x2 or 2x3 ft - Full Color)</li> [cite: 26]
-                    <li>🚩 1 Flex Banner (6x3 ft, Full Color)</li> [cite: 27]
-                    <li class="text-purple-600 font-bold">🎥 Video Proof Included</li> [cite: 28]
-                </ul>  
-                <a href="https://wa.me/917862043514" class="block mt-4 text-center bg-purple-600 text-white py-3 rounded-xl font-bold">Order on WhatsApp</a>  
-            </div>  
-        </div>  
-
-        <div class="pkg-card bg-yellow-500 text-white p-6 rounded-3xl shadow-xl border-b-8 border-yellow-700" onclick="togglePkg('pkg4')">  
-            <div class="flex justify-between items-center">  
-                <span class="text-3xl font-bold">₹27,900</span> [cite: 30]
-                <i class="fas fa-fire text-2xl"></i>  
-            </div>  
-            <p class="mt-2 text-yellow-100 font-bold italic">4. Business Booster</p> [cite: 30]
-            <div id="pkg4" class="details mt-4 bg-white text-gray-800 p-5 rounded-2xl shadow-inner">  
-                <ul class="space-y-2 text-sm md:text-base">  
-                    <li>📄 13,000 Pamphlets (Full Color, Glossy)</li> [cite: 31]
-                    <li>🏷️ 65 Stickers (12x18 inch, Full Color)</li> [cite: 32]
-                    <li>🛺 65 Rickshaw Banners (2x2 or 2x3 ft - Full Color)</li> [cite: 33]
-                    <li>🚩 1 Flex Banner (6x3 ft)</li> [cite: 34]
-                    <li class="text-orange-600 font-bold">📸 Photo/Video Proof Included</li> [cite: 34]
-                </ul>  
-                <a href="https://wa.me/917862043514" class="block mt-4 text-center bg-yellow-600 text-white py-3 rounded-xl font-bold">Order on WhatsApp</a>  
-            </div>  
-        </div>  
-
-        <div class="pkg-card bg-red-600 text-white p-6 rounded-3xl shadow-xl border-b-8 border-red-800" onclick="togglePkg('pkg5')">  
-            <div class="flex justify-between items-center">  
-                <span class="text-3xl font-bold">₹54,500</span> [cite: 35]
-                <i class="fas fa-crown text-2xl text-yellow-300"></i>  
-            </div>  
-            <p class="mt-2 text-red-100 font-bold italic text-sm md:text-base">5. V.I.P King Package</p> [cite: 35]
-            <div id="pkg5" class="details mt-4 bg-white text-gray-800 p-5 rounded-2xl shadow-inner">  
-                <ul class="space-y-2 text-sm md:text-base">  
-                    <li>📄 27,000 Pamphlets (Full Color, Glossy Paper)</li> [cite: 36]
-                    <li>🏷️ 140 Stickers (12x18 inch, Full Color)</li> [cite: 37]
-                    <li>🛺 140 Rickshaw Banners (2x2 or 2x3 ft - Full Color)</li> [cite: 38]
-                    <li>🏢 Sunpack Boards (17x26 inch, Full color) - one price -70</li> [cite: 38]
-                    <li>🚩 1 Flex Banner (6x3 ft Full Color)</li> [cite: 38]
-                    <li class="bg-yellow-100 text-red-600 font-black p-2 text-center rounded-lg mt-2">🎥 FREE Social Media Marketing</li> [cite: 40]
-                    <li class="text-orange-600 font-bold mt-2">📸 Photo/Video Proof Included</li> [cite: 39]
-                </ul>  
-                <a href="https://wa.me/917862043514" class="block mt-4 text-center bg-red-600 text-white py-3 rounded-xl font-bold">Grab VIP Deal</a>  
-            </div>  
-        </div>  
-    </div>
-
-    <div class="mt-16">
-        <h3 class="text-2xl font-black text-center mb-8 text-gray-800 uppercase tracking-widest">Special Advertising Options</h3> [cite: 41]
-        <div class="grid gap-8 md:grid-cols-2">
-            
-            <div class="bg-indigo-900 text-white p-8 rounded-3xl shadow-2xl">
-                <h4 class="text-xl font-bold mb-4 flex items-center gap-3">
-                    <i class="fas fa-shuttle-van text-orange-400"></i> 1. Rickshaw Ads [cite: 42]
-                </h4>
-                <div class="space-y-4">
-                    <div class="bg-indigo-800 p-4 rounded-xl border-l-4 border-orange-500">
-                        <p class="font-bold text-lg">Plan A: ₹6,000</p> [cite: 43]
-                        <p class="text-sm opacity-90">50 Banners | Full Color | 2x2 or 2x3 ft | All Village Coverage | Proof Included</p> [cite: 44, 45, 46]
-                    </div>
-                    <div class="bg-indigo-800 p-4 rounded-xl border-l-4 border-orange-500">
-                        <p class="font-bold text-lg">Plan B: ₹11,000</p> [cite: 49]
-                        <p class="text-sm opacity-90">101 Banners | Full Color | 2x2 or 2x3 ft | All Village Coverage | Proof Included</p> [cite: 50, 51, 52, 53]
-                    </div>
+            <div class="pkg-card bg-blue-600 text-white p-6 rounded-3xl shadow-xl border-b-8 border-blue-800" onclick="togglePkg('pkg1')">
+                <div class="flex justify-between items-center">
+                    <span class="text-3xl font-bold">₹4,000</span>
+                    <i class="fas fa-paper-plane text-2xl"></i>
+                </div>
+                <p class="mt-2 text-blue-100 font-medium italic underline">Click for details</p>
+                <div id="pkg1" class="details mt-4 bg-white text-gray-800 p-5 rounded-2xl shadow-inner">
+                    <p class="font-bold text-blue-600 mb-2 border-b pb-1">✨ Starter Pack:</p>
+                    <ul class="space-y-2 text-sm md:text-base">
+                        <li>📄 2,000 Pamphlets Back, One Color [cite: 11]</li>
+                        <li>🏷️ 5 Stickers 12 X 18 Full Color [cite: 12]</li>
+                        <li>🛺 7 Rickshaw Banners 2x2 ft, Full Color [cite: 13]</li>
+                        <li class="text-purple-600 font-bold">📸 Video/Photo Proof Incl. [cite: 14]</li>
+                    </ul>
+                    <a href="https://wa.me/917862043514" class="block mt-4 text-center bg-blue-600 text-white py-3 rounded-xl font-bold">Order on WhatsApp</a>
                 </div>
             </div>
 
-            <div class="bg-pink-900 text-white p-8 rounded-3xl shadow-2xl">
-                <h4 class="text-xl font-bold mb-4 flex items-center gap-3">
-                    <i class="fas fa-sticky-note text-yellow-400"></i> 2. Sticker/Poster Ads [cite: 54]
-                </h4>
-                <div class="space-y-4">
-                    <div class="bg-pink-800 p-4 rounded-xl border-l-4 border-yellow-500">
-                        <p class="font-bold text-lg">Plan A: ₹5,000</p> [cite: 55]
-                        <p class="text-sm opacity-90">100 Stickers | Full Color + Designing | 12x18 inch | Proof Included</p> [cite: 56, 57, 58, 59]
-                    </div>
-                    <div class="bg-pink-800 p-4 rounded-xl border-l-4 border-yellow-500">
-                        <p class="font-bold text-lg">Plan B: ₹10,000</p> [cite: 60]
-                        <p class="text-sm opacity-90">205 Stickers | Full Color + Designing | 12x18 inch | Proof Included</p> [cite: 61, 62, 63, 64]
-                    </div>
+            <div class="pkg-card bg-green-600 text-white p-6 rounded-3xl shadow-xl border-b-8 border-green-800" onclick="togglePkg('pkg2')">
+                <div class="flex justify-between items-center">
+                    <span class="text-3xl font-bold">₹7,900</span>
+                    <i class="fas fa-bullhorn text-2xl"></i>
+                </div>
+                <p class="mt-2 text-green-100 font-medium italic underline">Best Value</p>
+                <div id="pkg2" class="details mt-4 bg-white text-gray-800 p-5 rounded-2xl shadow-inner">
+                    <p class="font-bold text-green-600 mb-2 border-b pb-1">✨ Growing Pack:</p>
+                    <ul class="space-y-2 text-sm md:text-base">
+                        <li>📄 3,000 Pamphlets (Full Color, Glossy) [cite: 17]</li>
+                        <li>🏷️ 15 Stickers 12 X 18 Full Color [cite: 18]</li>
+                        <li>🛺 12 Rickshaw Banners (2x2 or 2x3 ft) [cite: 19]</li>
+                        <li>🚩 1 Flex Banner (6x3 ft, Full Color) [cite: 20]</li>
+                        <li class="text-green-600 font-bold">📸 Photo/Video Proof Incl. [cite: 21]</li>
+                    </ul>
+                    <a href="https://wa.me/917862043514" class="block mt-4 text-center bg-green-600 text-white py-3 rounded-xl font-bold">Order on WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="pkg-card bg-purple-600 text-white p-6 rounded-3xl shadow-xl border-b-8 border-purple-800" onclick="togglePkg('pkg3')">
+                <div class="flex justify-between items-center">
+                    <span class="text-3xl font-bold">₹14,900</span>
+                    <i class="fas fa-star text-2xl"></i>
+                </div>
+                <p class="mt-2 text-purple-100 font-medium italic underline">Most Popular</p>
+                <div id="pkg3" class="details mt-4 bg-white text-gray-800 p-5 rounded-2xl shadow-inner">
+                    <p class="font-bold text-purple-600 mb-2 border-b pb-1">✨ Professional Pack:</p>
+                    <ul class="space-y-2 text-sm md:text-base">
+                        <li>📄 6,000 Pamphlets (Full Color, Glossy) [cite: 25]</li>
+                        <li>🏷️ 30 Stickers (12x18 inch, Full Color) [cite: 25]</li>
+                        <li>🛺 30 Rickshaw Banners (2x2 or 2x3 ft) [cite: 26]</li>
+                        <li>🚩 1 Flex Banner (6x3 ft, Full Color) [cite: 27]</li>
+                        <li class="text-purple-600 font-bold">📸 Video Proof Included [cite: 28]</li>
+                    </ul>
+                    <a href="https://wa.me/917862043514" class="block mt-4 text-center bg-purple-600 text-white py-3 rounded-xl font-bold">Order on WhatsApp</a>
                 </div>
             </div>
         </div>
-    </div>
-</main>  
 
-<section class="bg-gradient-to-r from-orange-600 to-red-600 text-white py-12 text-center shadow-inner mt-10">  
-    <h2 class="text-3xl font-bold mb-4 uppercase tracking-tighter">📍 Our Service Areas</h2> [cite: 65]
-    <p class="text-lg font-medium px-4 max-w-3xl mx-auto leading-relaxed">  
-        Borsad | Anand | Nadiad | Vadodara | Petlad | Khambhat | Padra | V.V Nagar | Bakrol [cite: 66]
-    </p>  
-    <div class="mt-6 inline-block bg-white text-orange-600 px-8 py-3 rounded-full font-black animate-pulse shadow-xl">  
-        🚀 All Cities & Nearby Villages Covered! [cite: 67]
-    </div>  
-</section>  
+        <div class="text-center mt-10">
+            <button id="toggleBtn" onclick="toggleMore()" class="bg-orange-600 text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-orange-700 transition">
+                Show More Packages <i class="fas fa-chevron-down ml-2"></i>
+            </button>
+        </div>
 
-<section class="bg-white py-16 px-4" id="contact">  
-    <h2 class="text-3xl font-bold text-center mb-10 text-gray-800 uppercase underline decoration-orange-500 decoration-4 underline-offset-8">Contact Us 📞</h2>  
-    <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-6">  
-        <a href="tel:7862043514" class="flex flex-col items-center p-6 bg-gray-50 rounded-3xl border-2 border-transparent hover:border-orange-500 transition shadow-sm text-center">  
-            <i class="fas fa-phone-alt text-orange-500 text-3xl mb-4"></i>  
-            <p class="text-xs text-gray-500 uppercase font-bold">Call Us</p>  
-            <p class="font-black text-lg">7862043514</p> [cite: 7]
-        </a>  
-        <a href="mailto:krushndevkant@gmail.com" class="flex flex-col items-center p-6 bg-gray-50 rounded-3xl border-2 border-transparent hover:border-blue-500 transition shadow-sm text-center">  
-            <i class="fas fa-envelope text-blue-500 text-3xl mb-4"></i>  
-            <p class="text-xs text-gray-500 uppercase font-bold">Email Us</p>  
-            <p class="font-black text-lg break-all text-sm">krushndevkant@gmail.com</p> [cite: 8]
-        </a>  
-        <div class="flex flex-col items-center p-6 bg-gray-50 rounded-3xl border-2 border-transparent text-center">  
-            <i class="fas fa-map-marker-alt text-red-500 text-3xl mb-4"></i>  
-            <p class="text-xs text-gray-500 uppercase font-bold">Address</p>  
-            <p class="font-black text-sm">Gajana, Borsad, Anand - 388530</p> [cite: 6]
-        </div>  
-    </div>  
-</section>  
+        <div id="morePackages" class="hidden grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-10">
+            
+            <div class="pkg-card bg-yellow-500 text-white p-6 rounded-3xl shadow-xl border-b-8 border-yellow-700" onclick="togglePkg('pkg4')">
+                <div class="flex justify-between items-center">
+                    <span class="text-3xl font-bold">₹27,900</span>
+                    <i class="fas fa-fire text-2xl text-red-600"></i>
+                </div>
+                <p class="mt-2 text-yellow-100 font-medium italic underline">High Reach</p>
+                <div id="pkg4" class="details mt-4 bg-white text-gray-800 p-5 rounded-2xl shadow-inner">
+                    <p class="font-bold text-yellow-600 mb-2 border-b pb-1">✨ Business Booster:</p>
+                    <ul class="space-y-2 text-sm md:text-base">
+                        <li>📄 13,000 Pamphlets (Full Color, Glossy) [cite: 31]</li>
+                        <li>🏷️ 65 Stickers (12x18 inch, Full Color) [cite: 32]</li>
+                        <li>🛺 65 Rickshaw Banners (2x2 or 2x3 ft) [cite: 33]</li>
+                        <li>🚩 1 Flex Banner (6x3 ft) [cite: 34]</li>
+                        <li class="text-orange-600 font-bold">📸 Photo/Video Proof [cite: 34]</li>
+                    </ul>
+                    <a href="https://wa.me/917862043514" class="block mt-4 text-center bg-yellow-600 text-white py-3 rounded-xl font-bold">Order on WhatsApp</a>
+                </div>
+            </div>
 
-<footer class="bg-gray-900 text-white pt-12 pb-6 px-4">  
-    <div class="max-w-4xl mx-auto text-center">  
-        <div class="flex justify-center space-x-10 text-4xl mb-10">  
-            <a href="https://www.instagram.com/krishna_adwala" target="_blank" class="hover:text-pink-500 transition">  
-                <i class="fab fa-instagram"></i>  
-            </a>  
-            <a href="https://www.facebook.com/share/1EFvdHJczN/" target="_blank" class="hover:text-blue-500 transition">  
-                <i class="fab fa-facebook"></i>  
-            </a>  
-            <a href="https://youtube.com/@krishna_adwala07" target="_blank" class="hover:text-red-600 transition">  
-                <i class="fab fa-youtube"></i>  
-            </a>  
-        </div>  
-        <p class="text-gray-500 text-sm border-t border-gray-800 pt-8">  
-            © 2026 Krishna Advertisement. Designed for Krushn Kant (kkr). [cite: 68]
-        </p>  
-    </div>  
-</footer>  
+            <div class="pkg-card bg-red-600 text-white p-6 rounded-3xl shadow-xl border-b-8 border-red-800" onclick="togglePkg('pkg5')">
+                <div class="flex justify-between items-center">
+                    <span class="text-3xl font-bold">₹54,500</span>
+                    <i class="fas fa-crown text-2xl text-yellow-300"></i>
+                </div>
+                <p class="mt-2 text-red-100 font-medium italic underline">👑 V.I.P King Package</p>
+                <div id="pkg5" class="details mt-4 bg-white text-gray-800 p-5 rounded-2xl shadow-inner">
+                    <p class="font-bold text-red-600 mb-2 border-b pb-1">✨ Mega Offer:</p>
+                    <ul class="space-y-2 text-sm md:text-base">
+                        <li>📄 27,000 Pamphlets (Full Color, Glossy) [cite: 36]</li>
+                        <li>🏷️ 140 Stickers (12x18 inch, Full Color) [cite: 37]</li>
+                        <li>🛺 140 Rickshaw Banners (2x2 or 2x3 ft) [cite: 38]</li>
+                        <li>🏗️ Sunpack Boards (17x26 inch, Full color) [cite: 38]</li>
+                        <li>🚩 1 Flex Banner (6x3 ft Full Color) [cite: 38]</li>
+                        <li class="bg-yellow-100 text-red-600 font-black p-1 text-center rounded">🎥 Social Media Marketing FREE [cite: 40]</li>
+                    </ul>
+                    <a href="https://wa.me/917862043514" class="block mt-4 text-center bg-red-600 text-white py-3 rounded-xl font-bold">Grab VIP Deal</a>
+                </div>
+            </div>
 
-<script>  
-    function togglePkg(id) {  
-        const el = document.getElementById(id);  
-        const isActive = el.classList.contains('active');  
-          
-        // Close all first  
-        document.querySelectorAll('.details').forEach(d => {  
-            d.classList.remove('active');  
-        });  
-          
-        // Toggle clicked one  
-        if(!isActive) {  
-            el.classList.add('active');  
-            el.parentElement.scrollIntoView({ behavior: 'smooth', block: 'center' });  
-        }  
-    }  
-</script>  
+            <div class="pkg-card bg-indigo-600 text-white p-6 rounded-3xl shadow-xl border-b-8 border-indigo-800" onclick="togglePkg('pkg6')">
+                <div class="flex justify-between items-center">
+                    <span class="text-3xl font-bold">₹6,000</span>
+                    <i class="fas fa-bus text-2xl"></i>
+                </div>
+                <p class="mt-2 text-indigo-100 italic underline">Only Rickshaw Ads</p>
+                <div id="pkg6" class="details mt-4 bg-white text-gray-800 p-5 rounded-2xl shadow-inner">
+                    <ul class="space-y-2 text-sm">
+                        <li>🛺 50 Rickshaw Banners [cite: 44]</li>
+                        <li>🎨 Full Color 2x2/2x3 ft [cite: 45]</li>
+                        <li>📍 All Village Coverage [cite: 46]</li>
+                        <li class="text-orange-600 font-bold">📸 Proof Included [cite: 46]</li>
+                    </ul>
+                    <a href="https://wa.me/917862043514" class="block mt-4 text-center bg-indigo-600 text-white py-3 rounded-xl font-bold">Order Now</a>
+                </div>
+            </div>
 
+            <div class="pkg-card bg-indigo-700 text-white p-6 rounded-3xl shadow-xl border-b-8 border-indigo-900" onclick="togglePkg('pkg7')">
+                <div class="flex justify-between items-center">
+                    <span class="text-3xl font-bold">₹11,000</span>
+                    <i class="fas fa-shuttle-van text-2xl"></i>
+                </div>
+                <p class="mt-2 text-indigo-100 italic underline">Rickshaw Bulk Ads</p>
+                <div id="pkg7" class="details mt-4 bg-white text-gray-800 p-5 rounded-2xl shadow-inner">
+                    <ul class="space-y-2 text-sm">
+                        <li>🛺 101 Rickshaw Banners [cite: 50]</li>
+                        <li>🎨 Full Color 2x2/2x3 ft [cite: 51]</li>
+                        <li>📍 All Village Coverage [cite: 52]</li>
+                        <li class="text-orange-600 font-bold">📸 Proof Included [cite: 53]</li>
+                    </ul>
+                    <a href="https://wa.me/917862043514" class="block mt-4 text-center bg-indigo-700 text-white py-3 rounded-xl font-bold">Order Now</a>
+                </div>
+            </div>
+
+            <div class="pkg-card bg-pink-600 text-white p-6 rounded-3xl shadow-xl border-b-8 border-pink-800" onclick="togglePkg('pkg8')">
+                <div class="flex justify-between items-center">
+                    <span class="text-3xl font-bold">₹5,000</span>
+                    <i class="fas fa-sticky-note text-2xl"></i>
+                </div>
+                <p class="mt-2 text-pink-100 italic underline">Only Sticker Ads</p>
+                <div id="pkg8" class="details mt-4 bg-white text-gray-800 p-5 rounded-2xl shadow-inner">
+                    <ul class="space-y-2 text-sm">
+                        <li>🖼️ 100 Stickers [cite: 56]</li>
+                        <li>🎨 Full Color + Designing [cite: 57]</li>
+                        <li>📏 12 x 18 inch [cite: 58]</li>
+                        <li class="text-orange-600 font-bold">📸 Proof Included [cite: 59]</li>
+                    </ul>
+                    <a href="https://wa.me/917862043514" class="block mt-4 text-center bg-pink-600 text-white py-3 rounded-xl font-bold">Order Now</a>
+                </div>
+            </div>
+
+            <div class="pkg-card bg-pink-700 text-white p-6 rounded-3xl shadow-xl border-b-8 border-pink-900" onclick="togglePkg('pkg9')">
+                <div class="flex justify-between items-center">
+                    <span class="text-3xl font-bold">₹10,000</span>
+                    <i class="fas fa-images text-2xl"></i>
+                </div>
+                <p class="mt-2 text-pink-100 italic underline">Premium Stickers</p>
+                <div id="pkg9" class="details mt-4 bg-white text-gray-800 p-5 rounded-2xl shadow-inner">
+                    <ul class="space-y-2 text-sm">
+                        <li>🖼️ 205 Stickers [cite: 61]</li>
+                        <li>🎨 Full Color + Designing [cite: 62]</li>
+                        <li>📏 12 x 18 inch [cite: 63]</li>
+                        <li class="text-orange-600 font-bold">📸 Proof Included [cite: 64]</li>
+                    </ul>
+                    <a href="https://wa.me/917862043514" class="block mt-4 text-center bg-pink-700 text-white py-3 rounded-xl font-bold">Order Now</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section class="bg-gradient-to-r from-orange-500 to-red-500 text-white py-12 text-center shadow-inner">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">📍 Our Service Areas</h2>
+        <p class="text-lg font-medium px-4">
+            Borsad | Anand | Nadiad | Vadodara | Petlad | Khambhat | Padra | V.V Nagar | Bakrol [cite: 66]
+        </p>
+        <div class="mt-6 inline-block bg-white text-orange-600 px-6 py-2 rounded-full font-bold animate-bounce text-sm md:text-base">
+            🚀 All Cities & Nearby Villages Covered! [cite: 67]
+        </div>
+    </section>
+
+    <section class="bg-white py-16 px-4" id="contact">
+        <h2 class="text-3xl font-bold text-center mb-10 text-gray-800">Contact Us 📞</h2>
+        <div class="max-w-md mx-auto space-y-4">
+            <a href="tel:7862043514" class="flex items-center p-5 bg-gray-50 rounded-2xl border-2 border-transparent hover:border-orange-500 transition shadow-sm">
+                <i class="fas fa-phone-alt text-green-500 text-2xl mr-4"></i>
+                <div>
+                    <p class="text-xs text-gray-500">Call Us [cite: 7]</p>
+                    <p class="font-bold text-lg">7862043514</p>
+                </div>
+            </a>
+            <a href="mailto:krushndevkant@gmail.com" class="flex items-center p-5 bg-gray-50 rounded-2xl border-2 border-transparent hover:border-blue-500 transition shadow-sm">
+                <i class="fas fa-envelope text-blue-500 text-2xl mr-4"></i>
+                <div>
+                    <p class="text-xs text-gray-500">Email Us [cite: 8]</p>
+                    <p class="font-bold text-base md:text-lg">krushndevkant@gmail.com</p>
+                </div>
+            </a>
+            <a href="https://wa.me/917862043514" class="flex items-center p-5 bg-green-600 text-white rounded-2xl shadow-lg transform active:scale-95 transition">
+                <i class="fab fa-whatsapp text-3xl mr-4"></i>
+                <div>
+                    <p class="text-xs opacity-80">Fast Response</p>
+                    <p class="font-bold text-lg">Chat on WhatsApp</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white pt-12 pb-6 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h3 class="text-xl font-bold mb-6 text-orange-400">Join Us on Social Media</h3>
+            <div class="flex justify-center space-x-8 text-3xl mb-10">
+                <a href="https://www.instagram.com/krishna_adwala" target="_blank" class="hover:text-pink-500 transition"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/share/1EFvdHJczN/" target="_blank" class="hover:text-blue-500 transition"><i class="fab fa-facebook"></i></a>
+                <a href="https://youtube.com/@krishna_adwala07" target="_blank" class="hover:text-red-600 transition"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-2xl mb-8 border border-gray-700">
+                <p class="text-lg font-bold text-orange-400 mb-2"><i class="fas fa-map-marker-alt mr-2"></i>Location</p>
+                <p class="text-gray-300">Gajana, Borsad, Anand - 388530 [cite: 6]</p>
+            </div>
+            <p class="text-gray-500 text-xs md:text-sm">© 2026 Krishna Advertisement. Designed for Krushn Kant-kkr</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMore() {
+            const section = document.getElementById('morePackages');
+            const btn = document.getElementById('toggleBtn');
+            if (section.classList.contains('hidden')) {
+                section.classList.remove('hidden');
+                btn.innerHTML = 'Show Less Packages <i class="fas fa-chevron-up ml-2"></i>';
+            } else {
+                section.classList.add('hidden');
+                btn.innerHTML = 'Show More Packages <i class="fas fa-chevron-down ml-2"></i>';
+            }
+        }
+
+        function togglePkg(id) {
+            const el = document.getElementById(id);
+            const isActive = el.classList.contains('active');
+            document.querySelectorAll('.details').forEach(d => d.classList.remove('active'));
+            if (!isActive) {
+                el.classList.add('active');
+                el.parentElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+    </script>
 </body>
 </html>

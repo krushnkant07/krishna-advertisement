@@ -19,7 +19,7 @@
             --footer-text: #9ca3af;
             --shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
-        
+
         [data-theme="dark"] {
             --bg-color: #0f172a;
             --card-bg: #1e293b;
@@ -49,158 +49,66 @@
             transition: background-color 0.5s ease;
         }
 
-        /* 3D Rickshaw Animation */
-        .scene-3d {
-            perspective: 1000px;
-            height: 200px;
+        /* 3D Animated Background */
+        .anim-bg {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+            min-height: 250px;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-            position: relative;
         }
 
-        .rickshaw-container {
-            width: 300px;
-            height: 180px;
-            position: relative;
-            transform-style: preserve-3d;
-            animation: rickshawRun 8s linear infinite;
-        }
-
-        .rickshaw-body {
-            width: 200px;
-            height: 100px;
-            background: linear-gradient(135deg, #f97316, #ea580c);
-            border-radius: 20px 20px 10px 10px;
-            position: absolute;
-            top: 30px;
-            left: 50px;
-            box-shadow: 0 10px 30px rgba(249, 115, 22, 0.4);
-            transform: translateZ(20px);
-        }
-
-        .rickshaw-body::before {
+        .anim-bg::before {
             content: '';
             position: absolute;
-            width: 180px;
-            height: 60px;
-            background: linear-gradient(135deg, #fed7aa, #fdba74);
-            border-radius: 15px;
-            top: 10px;
-            left: 10px;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: bgMove 20s linear infinite;
         }
 
-        .rickshaw-body::after {
-            content: 'KRISHNA ADS';
+        @keyframes bgMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-30px, -30px); }
+        }
+
+        /* 3D Floating Shapes */
+        .shape-3d {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 14px;
-            font-weight: 900;
-            color: #c2410c;
-            letter-spacing: 2px;
-        }
-
-        .wheel {
-            width: 50px;
-            height: 50px;
-            border: 6px solid #374151;
             border-radius: 50%;
-            position: absolute;
-            bottom: 0;
-            background: repeating-conic-gradient(#374151 0deg 30deg, #6b7280 30deg 60deg);
-            animation: wheelSpin 0.5s linear infinite;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(5px);
+            animation: float3d 6s ease-in-out infinite;
         }
 
-        .wheel.front { right: 20px; }
-        .wheel.back { left: 30px; }
-
-        .wheel::after {
-            content: '';
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            background: #f97316;
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        .shape-3d:nth-child(1) {
+            width: 80px; height: 80px;
+            top: 20%; left: 10%;
+            animation-delay: 0s;
+        }
+        .shape-3d:nth-child(2) {
+            width: 60px; height: 60px;
+            top: 60%; left: 80%;
+            animation-delay: 2s;
+        }
+        .shape-3d:nth-child(3) {
+            width: 100px; height: 100px;
+            top: 40%; left: 50%;
+            animation-delay: 4s;
+        }
+        .shape-3d:nth-child(4) {
+            width: 40px; height: 40px;
+            top: 10%; left: 70%;
+            animation-delay: 1s;
         }
 
-        .rickshaw-handle {
-            width: 80px;
-            height: 8px;
-            background: #4b5563;
-            position: absolute;
-            top: 50px;
-            right: -40px;
-            border-radius: 4px;
-            transform: rotate(-20deg);
-        }
-
-        .rickshaw-roof {
-            width: 220px;
-            height: 30px;
-            background: linear-gradient(135deg, #1e40af, #3b82f6);
-            border-radius: 30px 30px 5px 5px;
-            position: absolute;
-            top: 0;
-            left: 40px;
-            transform: translateZ(30px);
-        }
-
-        .rickshaw-roof::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 5px;
-            background: rgba(255,255,255,0.3);
-            top: 5px;
-            border-radius: 30px;
-        }
-
-        .rickshaw-light {
-            width: 15px;
-            height: 15px;
-            background: #fbbf24;
-            border-radius: 50%;
-            position: absolute;
-            right: 10px;
-            top: 50px;
-            box-shadow: 0 0 20px #fbbf24, 0 0 40px #fbbf24;
-            animation: lightPulse 1s ease-in-out infinite;
-        }
-
-        .road-line {
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
-            height: 3px;
-            background: repeating-linear-gradient(90deg, var(--text-secondary) 0px, var(--text-secondary) 40px, transparent 40px, transparent 80px);
-            animation: roadMove 1s linear infinite;
-        }
-
-        @keyframes rickshawRun {
-            0% { transform: translateX(-400px) rotateY(0deg); }
-            50% { transform: translateX(0px) rotateY(5deg); }
-            100% { transform: translateX(400px) rotateY(0deg); }
-        }
-
-        @keyframes wheelSpin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes lightPulse {
-            0%, 100% { opacity: 1; box-shadow: 0 0 20px #fbbf24; }
-            50% { opacity: 0.6; box-shadow: 0 0 40px #fbbf24, 0 0 60px #fbbf24; }
-        }
-
-        @keyframes roadMove {
-            0% { background-position: 0px 0px; }
-            100% { background-position: -80px 0px; }
+        @keyframes float3d {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            33% { transform: translateY(-30px) rotate(120deg) scale(1.1); }
+            66% { transform: translateY(15px) rotate(240deg) scale(0.9); }
         }
 
         /* 3D Card Effects */
@@ -254,26 +162,25 @@
             transform: scale(1.1) rotate(15deg);
         }
 
-        /* Particles */
-        .particle {
+        /* Pulse Ring Animation */
+        .pulse-ring {
             position: absolute;
-            width: 6px;
-            height: 6px;
-            background: var(--accent-color);
             border-radius: 50%;
-            opacity: 0.6;
-            animation: particleFloat 4s ease-in-out infinite;
+            border: 2px solid rgba(255,255,255,0.3);
+            animation: pulseRing 3s ease-out infinite;
         }
-        @keyframes particleFloat {
-            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
-            50% { transform: translateY(-100px) translateX(20px); opacity: 0.8; }
+        @keyframes pulseRing {
+            0% { transform: scale(0.8); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
         }
 
-        .overlay-3d {
-            background: linear-gradient(135deg, rgba(249,115,22,0.9), rgba(234,88,12,0.9));
-            transform: translateZ(30px);
+        /* Responsive */
+        @media (max-width: 768px) {
+            .anim-bg { min-height: 180px; }
+            .shape-3d:nth-child(3) { width: 60px; height: 60px; }
         }
     </style>
+<base target="_blank">
 </head>
 <body class="font-sans">
 
@@ -287,31 +194,26 @@
         </a>
     </nav>
 
-    <!-- 3D Rickshaw Animation Section -->
-    <div class="scene-3d card-bg">
-        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
-        <div class="particle" style="left: 30%; animation-delay: 1s;"></div>
-        <div class="particle" style="left: 50%; animation-delay: 2s;"></div>
-        <div class="particle" style="left: 70%; animation-delay: 0.5s;"></div>
-        <div class="particle" style="left: 90%; animation-delay: 1.5s;"></div>
-        
-        <div class="rickshaw-container">
-            <div class="rickshaw-roof"></div>
-            <div class="rickshaw-body"></div>
-            <div class="rickshaw-handle"></div>
-            <div class="rickshaw-light"></div>
-            <div class="wheel front"></div>
-            <div class="wheel back"></div>
+    <!-- 3D Animated Header Background -->
+    <div class="anim-bg">
+        <div class="shape-3d"></div>
+        <div class="shape-3d"></div>
+        <div class="shape-3d"></div>
+        <div class="shape-3d"></div>
+        <div class="pulse-ring" style="width: 100px; height: 100px; top: 30%; left: 45%;"></div>
+        <div class="relative z-10 text-center text-white px-4">
+            <h1 class="text-4xl md:text-5xl font-black mb-2 float-anim">About Us</h1>
+            <p class="text-lg opacity-90">Krishna Advertisement - Borsad, Gujarat</p>
         </div>
-        <div class="road-line"></div>
     </div>
 
     <main class="container mx-auto px-4 py-12">
         <div class="max-w-4xl mx-auto card-bg rounded-3xl shadow-xl overflow-hidden card-3d" style="box-shadow: var(--shadow);">
             <div class="md:flex">
                 <div class="md:w-1/3 flex items-center justify-center p-8" style="background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));">
-                    <div class="w-48 h-48 rounded-full border-4 border-white overflow-hidden shadow-2xl float-anim">
-                        <img src="images/image_1776123009535.jpg" alt="Krushn Kant" class="w-full h-full object-cover">
+                    <div class="w-48 h-48 rounded-full border-4 border-white overflow-hidden shadow-2xl float-anim relative">
+                        <div class="pulse-ring" style="width: 200px; height: 200px; top: -10px; left: -10px;"></div>
+                        <img src="images/image_1776123009535.jpg" alt="Krushn Kant" class="w-full h-full object-cover relative z-10">
                     </div>
                 </div>
                 <div class="md:w-2/3 p-8 md:p-12">
@@ -362,7 +264,7 @@
             const html = document.documentElement;
             const icon = document.getElementById('themeIcon');
             const currentTheme = html.getAttribute('data-theme');
-            
+
             if (currentTheme === 'dark') {
                 html.removeAttribute('data-theme');
                 icon.className = 'fas fa-moon';
@@ -374,7 +276,6 @@
             }
         }
 
-        // Load saved theme
         document.addEventListener('DOMContentLoaded', function() {
             const savedTheme = localStorage.getItem('theme');
             const icon = document.getElementById('themeIcon');
@@ -386,6 +287,3 @@
     </script>
 </body>
 </html>
-
-print("about.html created successfully!")
-print(f"Length: {len(about_html)} characters")

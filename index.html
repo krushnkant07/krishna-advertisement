@@ -7,248 +7,447 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>Krishna Ads | Full Final Packages</title>
     <style>
-        .details { display: none; }
-        .details.active { display: block; }
-        .pkg-card { cursor: pointer; transition: transform 0.2s; }
-        #morePackages.hidden { display: none; }
-    </style>
-</head>
-<body class="bg-gray-50 font-sans">
+        :root {
+            --bg-color: #f9fafb;
+            --card-bg: #ffffff;
+            --text-color: #1f2937;
+            --text-secondary: #6b7280;
+            --border-color: #e5e7eb;
+            --accent-color: #f97316;
+            --accent-hover: #ea580c;
+            --nav-bg: #ffffff;
+            --footer-text: #9ca3af;
+            --shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
 
-    <header class="bg-white shadow-lg py-4 border-b-4 border-orange-500 sticky top-0 z-50">
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --accent-color: #fb923c;
+            --accent-hover: #f97316;
+            --nav-bg: #1e293b;
+            --footer-text: #64748b;
+            --shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        .card-bg {
+            background-color: var(--card-bg);
+            transition: background-color 0.5s ease;
+        }
+
+        .nav-bg {
+            background-color: var(--nav-bg);
+            transition: background-color 0.5s ease;
+        }
+
+        /* 3D Animated Header Background */
+        .anim-bg {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+            min-height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .anim-bg::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: bgMove 20s linear infinite;
+        }
+
+        @keyframes bgMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-30px, -30px); }
+        }
+
+        /* 3D Floating Shapes */
+        .shape-3d {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(5px);
+            animation: float3d 6s ease-in-out infinite;
+        }
+
+        .shape-3d:nth-child(1) {
+            width: 80px; height: 80px;
+            top: 20%; left: 10%;
+            animation-delay: 0s;
+        }
+        .shape-3d:nth-child(2) {
+            width: 60px; height: 60px;
+            top: 60%; left: 80%;
+            animation-delay: 2s;
+        }
+        .shape-3d:nth-child(3) {
+            width: 100px; height: 100px;
+            top: 40%; left: 50%;
+            animation-delay: 4s;
+        }
+        .shape-3d:nth-child(4) {
+            width: 40px; height: 40px;
+            top: 10%; left: 70%;
+            animation-delay: 1s;
+        }
+
+        @keyframes float3d {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            33% { transform: translateY(-30px) rotate(120deg) scale(1.1); }
+            66% { transform: translateY(15px) rotate(240deg) scale(0.9); }
+        }
+
+        /* Package Cards 3D */
+        .pkg-card { 
+            cursor: pointer; 
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            transform-style: preserve-3d;
+        }
+        .pkg-card:hover {
+            transform: translateY(-15px) rotateX(5deg) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .details { display: none; }
+        .details.active { display: block; animation: slideDown 0.4s ease; }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #morePackages.hidden { display: none; }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            background: var(--card-bg);
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            color: var(--text-color);
+        }
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(15deg);
+        }
+
+        /* Floating Animation */
+        .float-anim {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Pulse Ring */
+        .pulse-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.3);
+            animation: pulseRing 3s ease-out infinite;
+        }
+        @keyframes pulseRing {
+            0% { transform: scale(0.8); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        .contact-card {
+            transform-style: preserve-3d;
+            transition: all 0.4s ease;
+        }
+        .contact-card:hover {
+            transform: translateZ(20px) scale(1.02);
+        }
+
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .anim-bg { min-height: 200px; }
+            .shape-3d:nth-child(3) { width: 60px; height: 60px; }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body class="font-sans">
+
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/White Mode">
+        <i class="fas fa-moon" id="themeIcon"></i>
+    </button>
+
+    <header class="nav-bg shadow-lg py-4 border-b-4 sticky top-0 z-50" style="border-color: var(--accent-color);">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <div class="w-12 h-12 md:w-16 md:h-16 rounded-full border-2 border-orange-500 overflow-hidden shadow-md">
+                <div class="w-12 h-12 md:w-16 md:h-16 rounded-full border-2 overflow-hidden shadow-md" style="border-color: var(--accent-color);">
                     <img src="images/image_1776123009535.jpg" alt="Krishna" class="w-full h-full object-cover">
                 </div>
                 <div class="text-left">
-                    <h1 class="text-xl md:text-2xl font-black text-orange-600 tracking-tight leading-none uppercase">Krishna Ads</h1>
-                    <p class="text-gray-500 text-[10px] md:text-xs font-medium">Advertising Expert</p>
+                    <h1 class="text-xl md:text-2xl font-black tracking-tight leading-none uppercase" style="color: var(--accent-color);">Krishna Ads</h1>
+                    <p class="text-[10px] md:text-xs font-medium" style="color: var(--text-secondary);">Advertising Expert</p>
                 </div>
             </div>
             <div class="flex gap-2 md:gap-4">
-                <a href="about.html" class="text-gray-700 font-bold text-sm hover:text-orange-600 self-center mr-2">About</a>
-                <a href="profile.html" class="text-gray-700 font-bold text-sm hover:text-orange-600 self-center mr-2">Profile</a>
-                <a href="gallery.html" class="bg-orange-600 text-white px-3 py-2 rounded-xl font-bold text-xs md:text-sm shadow-md flex items-center gap-2">
+                <a href="about.html" class="font-bold text-sm self-center mr-2" style="color: var(--text-color);" onmouseover="this.style.color='var(--accent-color)'" onmouseout="this.style.color='var(--text-color)'">About</a>
+                <a href="profile.html" class="font-bold text-sm self-center mr-2" style="color: var(--text-color);" onmouseover="this.style.color='var(--accent-color)'" onmouseout="this.style.color='var(--text-color)'">Profile</a>
+                <a href="gallery.html" class="text-white px-3 py-2 rounded-xl font-bold text-xs md:text-sm shadow-md flex items-center gap-2" style="background: var(--accent-color);">
                     <i class="fas fa-images"></i> Gallery
                 </a>
             </div>
         </div>
     </header>
 
+    <!-- 3D Animated Header Background -->
+    <div class="anim-bg">
+        <div class="shape-3d"></div>
+        <div class="shape-3d"></div>
+        <div class="shape-3d"></div>
+        <div class="shape-3d"></div>
+        <div class="pulse-ring" style="width: 100px; height: 100px; top: 30%; left: 45%;"></div>
+        <div class="relative z-10 text-center text-white px-4">
+            <h1 class="text-4xl md:text-5xl font-black mb-2 float-anim">Advertising Packages 💼</h1>
+            <p class="text-lg opacity-90">Best Marketing Solutions for Your Business</p>
+        </div>
+    </div>
+
     <main class="container mx-auto px-4 py-10">
-        <h2 class="text-3xl font-bold text-center mb-10 text-gray-800">Advertising Packages 💼</h2>
+        <h2 class="text-3xl font-bold text-center mb-10" style="color: var(--text-color);">Choose Your Package</h2>
 
         <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
 
-            <div class="pkg-card bg-blue-600 text-white p-6 rounded-3xl shadow-xl border-b-8 border-blue-800" onclick="togglePkg('pkg1')">
+            <div class="pkg-card text-white p-6 rounded-3xl shadow-xl border-b-8" style="background: #2563eb; border-color: #1e40af;" onclick="togglePkg('pkg1')">
                 <div class="flex justify-between items-center">
                     <span class="text-3xl font-bold">₹4,000</span>
                     <i class="fas fa-paper-plane text-2xl"></i>
                 </div>
-                <p class="mt-2 text-blue-100 font-medium italic underline">Click for details</p>
-                <div id="pkg1" class="details mt-4 bg-white text-gray-800 p-5 rounded-2xl shadow-inner">
-                    <p class="font-bold text-blue-600 mb-2 border-b pb-1">✨ Starter Pack:</p>
+                <p class="mt-2 font-medium italic underline">Click for details</p>
+                <div id="pkg1" class="details mt-4 p-5 rounded-2xl shadow-inner card-bg" style="color: var(--text-color);">
+                    <p class="font-bold mb-2 border-b pb-1" style="color: #2563eb;">✨ Starter Pack:</p>
                     <ul class="space-y-2 text-sm md:text-base">
                         <li>📄 2,000 Pamphlets Back, One Color</li>
                         <li>🏷️ 5 Stickers 12 X 18 Full Color</li>
                         <li>🛺 7 Riksha Bennar 2 x 2, 3 x 3 ft -Full Color</li>
-                        <li class="text-purple-600 font-bold">📸 Video, Photo Proof Incl.</li>
+                        <li class="font-bold" style="color: #9333ea;">📸 Video, Photo Proof Incl.</li>
                     </ul>
-                    <a href="https://wa.me/917862043514" class="block mt-4 text-center bg-blue-600 text-white py-3 rounded-xl font-bold">Order on WhatsApp</a>
+                    <a href="https://wa.me/917862043514" class="block mt-4 text-center text-white py-3 rounded-xl font-bold" style="background: #2563eb;">Order on WhatsApp</a>
                 </div>
             </div>
 
-            <div class="pkg-card bg-green-600 text-white p-6 rounded-3xl shadow-xl border-b-8 border-green-800" onclick="togglePkg('pkg2')">
+            <div class="pkg-card text-white p-6 rounded-3xl shadow-xl border-b-8" style="background: #16a34a; border-color: #166534;" onclick="togglePkg('pkg2')">
                 <div class="flex justify-between items-center">
                     <span class="text-3xl font-bold">₹7,900</span>
                     <i class="fas fa-bullhorn text-2xl"></i>
                 </div>
-                <p class="mt-2 text-green-100 font-medium italic underline">Best Value</p>
-                <div id="pkg2" class="details mt-4 bg-white text-gray-800 p-5 rounded-2xl shadow-inner">
-                    <p class="font-bold text-green-600 mb-2 border-b pb-1">✨ Growing Pack:</p>
+                <p class="mt-2 font-medium italic underline">Best Value</p>
+                <div id="pkg2" class="details mt-4 p-5 rounded-2xl shadow-inner card-bg" style="color: var(--text-color);">
+                    <p class="font-bold mb-2 border-b pb-1" style="color: #16a34a;">✨ Growing Pack:</p>
                     <ul class="space-y-2 text-sm md:text-base">
                         <li>📄 3,000 Pamphlets (Full Color, 70-80 GSM Glossy Paper)</li>
                         <li>🏷️ 15 Stickers 12 X 18 Full Color</li>
                         <li>🛺 12 Riksha Bennar 2 x 2, 3 x 3 Ft -Full Color</li>
                         <li>🚩 1 Flex Banner(6x3 ft, full color)</li>
-                        <li class="text-green-600 font-bold">📸 Video, Photo Proof Incl.</li>
+                        <li class="font-bold" style="color: #16a34a;">📸 Video, Photo Proof Incl.</li>
                     </ul>
-                    <a href="https://wa.me/917862043514" class="block mt-4 text-center bg-green-600 text-white py-3 rounded-xl font-bold">Order on WhatsApp</a>
+                    <a href="https://wa.me/917862043514" class="block mt-4 text-center text-white py-3 rounded-xl font-bold" style="background: #16a34a;">Order on WhatsApp</a>
                 </div>
             </div>
 
-            <div class="pkg-card bg-purple-600 text-white p-6 rounded-3xl shadow-xl border-b-8 border-purple-800" onclick="togglePkg('pkg3')">
+            <div class="pkg-card text-white p-6 rounded-3xl shadow-xl border-b-8" style="background: #9333ea; border-color: #7e22ce;" onclick="togglePkg('pkg3')">
                 <div class="flex justify-between items-center">
                     <span class="text-3xl font-bold">₹14,900</span>
                     <i class="fas fa-star text-2xl"></i>
                 </div>
-                <p class="mt-2 text-purple-100 font-medium italic underline">Most Popular</p>
-                <div id="pkg3" class="details mt-4 bg-white text-gray-800 p-5 rounded-2xl shadow-inner">
-                    <p class="font-bold text-purple-600 mb-2 border-b pb-1">✨ Professional Pack:</p>
+                <p class="mt-2 font-medium italic underline">Most Popular</p>
+                <div id="pkg3" class="details mt-4 p-5 rounded-2xl shadow-inner card-bg" style="color: var(--text-color);">
+                    <p class="font-bold mb-2 border-b pb-1" style="color: #9333ea;">✨ Professional Pack:</p>
                     <ul class="space-y-2 text-sm md:text-base">
                         <li>📄 6,000 Pamphlets (Full Color, 70-80 GSM Glossy Paper)</li>
                         <li>🏷️ 30 Stickers 12 X 18 Full Color</li>
                         <li>🛺 30 Riksha Bennar 2 x 2, 3 x 3 Ft-Full Color</li>
                         <li>🚩 1 Flex Banner(6x3 ft, full color)</li>
-                        <li class="text-purple-600 font-bold">📸 Video Proof Incl.</li>
+                        <li class="font-bold" style="color: #9333ea;">📸 Video Proof Incl.</li>
                     </ul>
-                    <a href="https://wa.me/917862043514" class="block mt-4 text-center bg-purple-600 text-white py-3 rounded-xl font-bold">Order on WhatsApp</a>
+                    <a href="https://wa.me/917862043514" class="block mt-4 text-center text-white py-3 rounded-xl font-bold" style="background: #9333ea;">Order on WhatsApp</a>
                 </div>
             </div>
 
-
-
-            <div class="pkg-card bg-yellow-500 text-white p-6 rounded-3xl shadow-xl border-b-8 border-yellow-700" onclick="togglePkg('pkg4')">
+            <div class="pkg-card text-white p-6 rounded-3xl shadow-xl border-b-8" style="background: #eab308; border-color: #a16207;" onclick="togglePkg('pkg4')">
                 <div class="flex justify-between items-center">
                     <span class="text-3xl font-bold">₹27,900</span>
-                    <i class="fas fa-fire text-2xl text-red-600"></i>
+                    <i class="fas fa-fire text-2xl" style="color: #dc2626;"></i>
                 </div>
-                <p class="mt-2 text-yellow-100 font-medium italic underline">High Reach</p>
-                <div id="pkg4" class="details mt-4 bg-white text-gray-800 p-5 rounded-2xl shadow-inner">
-                    <p class="font-bold text-yellow-600 mb-2 border-b pb-1">✨ Business Booster:</p>
+                <p class="mt-2 font-medium italic underline">High Reach</p>
+                <div id="pkg4" class="details mt-4 p-5 rounded-2xl shadow-inner card-bg" style="color: var(--text-color);">
+                    <p class="font-bold mb-2 border-b pb-1" style="color: #ca8a04;">✨ Business Booster:</p>
                     <ul class="space-y-2 text-sm md:text-base">
                         <li>📄 13,000 Pamphlets (Full Color, 70-80 GSM Glossy Paper)</li>
                         <li>🏷️ 65 Stickers 12 X 18 Full Color</li>
                         <li>🛺 65 Riksha Bennar 2 x 2, 3 x 3 Ft-Full Color</li>
                         <li>🚩 1 Flex Banner(6x3 ft, full color)</li>
-                        <li class="text-orange-600 font-bold">📸 Photo/Video Proof</li>
+                        <li class="font-bold" style="color: #ea580c;">📸 Photo/Video Proof</li>
                     </ul>
-                    <a href="https://wa.me/917862043514" class="block mt-4 text-center bg-yellow-600 text-white py-3 rounded-xl font-bold">Order on WhatsApp</a>
+                    <a href="https://wa.me/917862043514" class="block mt-4 text-center text-white py-3 rounded-xl font-bold" style="background: #ca8a04;">Order on WhatsApp</a>
                 </div>
             </div>
         </div>
 
         <div class="text-center mt-10">
-            <button id="toggleBtn" onclick="toggleMore()" class="bg-orange-600 text-white px-8 py-3 rounded-xl font-bold shadow-md hover:bg-orange-700 transition">
+            <button id="toggleBtn" onclick="toggleMore()" class="text-white px-8 py-3 rounded-xl font-bold shadow-md hover:opacity-90 transition" style="background: var(--accent-color);">
                 Show More Packages 🔽
             </button>
         </div>
 
         <div id="morePackages" class="hidden mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            
 
-            <div class="pkg-card bg-red-600 text-white p-6 rounded-3xl shadow-xl border-b-8 border-red-800" onclick="togglePkg('pkg5')">
+            <div class="pkg-card text-white p-6 rounded-3xl shadow-xl border-b-8" style="background: #dc2626; border-color: #991b1b;" onclick="togglePkg('pkg5')">
                 <div class="flex justify-between items-center">
                     <span class="text-3xl font-bold">₹54,500</span>
-                    <i class="fas fa-crown text-2xl text-yellow-300"></i>
+                    <i class="fas fa-crown text-2xl" style="color: #fde047;"></i>
                 </div>
-                <p class="mt-2 text-red-100 font-medium italic underline">👑 V.I.P King Package</p>
-                <div id="pkg5" class="details mt-4 bg-white text-gray-800 p-5 rounded-2xl shadow-inner">
-                    <p class="font-bold text-red-600 mb-2 border-b pb-1">✨ Mega Offer:</p>
+                <p class="mt-2 font-medium italic underline">👑 V.I.P King Package</p>
+                <div id="pkg5" class="details mt-4 p-5 rounded-2xl shadow-inner card-bg" style="color: var(--text-color);">
+                    <p class="font-bold mb-2 border-b pb-1" style="color: #dc2626;">✨ Mega Offer:</p>
                     <ul class="space-y-2 text-sm md:text-base">
                         <li>📄 27,000 Pamphlets (Full Color, 70-80 GSM Glossy Paper)</li>
                         <li>🏷️ 140 Stickers 12 X 18 Full Color</li>
                         <li>🛺 140 Riksha 2 x 2, 3 x 3 Ft-Full Color</li>
                         <li>🚩 1 Flex Banner(6x3 ft, full color)</li>
-                        <li class="text-orange-600 font-bold">📸 Photo/Video Proof</li>
-                        <li class="bg-yellow-100 text-red-600 font-black p-1 text-center rounded">🎥 Social Media Marketing FREE</li>
+                        <li class="font-bold" style="color: #ea580c;">📸 Photo/Video Proof</li>
+                        <li class="font-black p-1 text-center rounded" style="background: #fef3c7; color: #dc2626;">🎥 Social Media Marketing FREE</li>
                     </ul>
-                    <a href="https://wa.me/917862043514" class="block mt-4 text-center bg-red-600 text-white py-3 rounded-xl font-bold">Grab VIP Deal</a>
+                    <a href="https://wa.me/917862043514" class="block mt-4 text-center text-white py-3 rounded-xl font-bold" style="background: #dc2626;">Grab VIP Deal</a>
                 </div>
             </div>
 
-            <div class="pkg-card bg-indigo-600 text-white p-6 rounded-3xl shadow-xl border-b-8 border-indigo-800" onclick="togglePkg('pkg6')">
+            <div class="pkg-card text-white p-6 rounded-3xl shadow-xl border-b-8" style="background: #4f46e5; border-color: #3730a3;" onclick="togglePkg('pkg6')">
                 <div class="flex justify-between items-center"><span class="text-3xl font-bold">₹6,000</span><i class="fas fa-bus text-2xl"></i></div>
-                <p class="mt-2 text-indigo-100 underline">Only Rickshaw Ads</p>
-                <div id="pkg6" class="details mt-4 bg-white text-gray-800 p-5 rounded-2xl">
+                <p class="mt-2 underline">Only Rickshaw Ads</p>
+                <div id="pkg6" class="details mt-4 p-5 rounded-2xl card-bg" style="color: var(--text-color);">
                     <ul class="space-y-2">
                         <li>🛺 50 Rickshaw Banner</li>
                         <li>🎨 Full Color</li>
                         <li>📏 Size: 2 x 2, 3 x 3 ft</li>
-                        <li class="text-orange-600 font-bold">📸 Photo/Video Proof</li>
+                        <li class="font-bold" style="color: #ea580c;">📸 Photo/Video Proof</li>
                     </ul>
                 </div>
             </div>
 
-             <div class="pkg-card bg-indigo-600 text-white p-6 rounded-3xl shadow-xl border-b-8 border-indigo-800" onclick="togglePkg('pkg7')">
+            <div class="pkg-card text-white p-6 rounded-3xl shadow-xl border-b-8" style="background: #4f46e5; border-color: #3730a3;" onclick="togglePkg('pkg7')">
                 <div class="flex justify-between items-center"><span class="text-3xl font-bold">₹11,000</span><i class="fas fa-bus text-2xl"></i></div>
-                <p class="mt-2 text-indigo-100 underline">Only Rickshaw Ads</p>
-                <div id="pkg6" class="details mt-4 bg-white text-gray-800 p-5 rounded-2xl">
+                <p class="mt-2 underline">Only Rickshaw Ads</p>
+                <div id="pkg7" class="details mt-4 p-5 rounded-2xl card-bg" style="color: var(--text-color);">
                     <ul class="space-y-2">
                         <li>🛺 101 Rickshaw Banner</li>
                         <li>🎨 Full Color</li>
                         <li>📏 Size: 2 x 2, 3 x 3 ft</li>
-                        <li class="text-orange-600 font-bold">📸 Photo/Video Proof</li>
+                        <li class="font-bold" style="color: #ea580c;">📸 Photo/Video Proof</li>
                     </ul>
                 </div>
             </div>
 
-          
-
-            <div class="pkg-card bg-indigo-600 text-white p-6 rounded-3xl shadow-xl border-b-8 border-indigo-800" onclick="togglePkg('pkg8')">
+            <div class="pkg-card text-white p-6 rounded-3xl shadow-xl border-b-8" style="background: #4f46e5; border-color: #3730a3;" onclick="togglePkg('pkg8')">
                 <div class="flex justify-between items-center"><span class="text-3xl font-bold">₹5,000</span><i class="fas fa-bus text-2xl"></i></div>
-                <p class="mt-2 text-indigo-100 underline">Only Stickers Ads</p>
-                <div id="pkg6" class="details mt-4 bg-white text-gray-800 p-5 rounded-2xl">
+                <p class="mt-2 underline">Only Stickers Ads</p>
+                <div id="pkg8" class="details mt-4 p-5 rounded-2xl card-bg" style="color: var(--text-color);">
                     <ul class="space-y-2">
                         <li>🏷️100 Stickers </li>
                         <li>🎨 Full Color</li>
                         <li>📏 Size: 12 x 18 Inch</li>
-                        <li class="text-orange-600 font-bold">📸 Photo/Video Proof</li>
+                        <li class="font-bold" style="color: #ea580c;">📸 Photo/Video Proof</li>
                     </ul>
                 </div>
             </div>
 
-            <div class="pkg-card bg-red-600 text-white p-6 rounded-3xl shadow-xl border-b-8 border-indigo-800" onclick="togglePkg('pkg9')">
+            <div class="pkg-card text-white p-6 rounded-3xl shadow-xl border-b-8" style="background: #dc2626; border-color: #3730a3;" onclick="togglePkg('pkg9')">
                 <div class="flex justify-between items-center"><span class="text-3xl font-bold">₹10,000</span><i class="fas fa-bus text-2xl"></i></div>
-                <p class="mt-2 text-indigo-100 underline">Only Stickers Ads</p>
-                <div id="pkg6" class="details mt-4 bg-white text-gray-800 p-5 rounded-2xl">
+                <p class="mt-2 underline">Only Stickers Ads</p>
+                <div id="pkg9" class="details mt-4 p-5 rounded-2xl card-bg" style="color: var(--text-color);">
                     <ul class="space-y-2">
                         <li>🏷️ 205 Stickers </li>
                         <li>🎨 Full Color</li>
                         <li>📏 Size: 12 x 18 Inch</li>
-                        <li class="text-orange-600 font-bold">📸 Photo/Video Proof</li>
+                        <li class="font-bold" style="color: #ea580c;">📸 Photo/Video Proof</li>
                     </ul>
                 </div>
             </div>
         </div>
     </main>
 
-    <section class="bg-gradient-to-r from-orange-500 to-red-500 text-white py-12 text-center shadow-inner">
-        <h2 class="text-3xl font-bold mb-4">📍 Our Service Areas</h2>
+    <section class="text-white py-12 text-center shadow-inner" style="background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));">
+        <h2 class="text-3xl font-bold mb-4 float-anim">📍 Our Service Areas</h2>
         <p class="text-xl font-medium px-4">Borsad | Anand | Nadiad | Vadodara | Petlad | Khambhat | Padra | All village</p>
-        <div class="mt-6 inline-block bg-white text-orange-600 px-6 py-2 rounded-full font-bold animate-bounce shadow-md">
+        <div class="mt-6 inline-block text-white px-6 py-2 rounded-full font-bold animate-bounce shadow-md" style="background: var(--card-bg); color: var(--accent-color);">
             🚀 All Nearby Villages Covered!
         </div>
     </section>
 
-    <section class="bg-white py-16 px-4" id="contact">
-        <h2 class="text-3xl font-bold text-center mb-10 text-gray-800">Contact Us 📞</h2>
+    <section class="py-16 px-4" id="contact" style="background: var(--bg-color);">
+        <h2 class="text-3xl font-bold text-center mb-10" style="color: var(--text-color);">Contact Us 📞</h2>
         <div class="max-w-md mx-auto space-y-4">
-            <a href="tel:7862043514" class="flex items-center p-5 bg-gray-50 rounded-2xl border-2 border-transparent hover:border-orange-500 transition shadow-sm">
+            <a href="tel:7862043514" class="contact-card flex items-center p-5 rounded-2xl border-2 border-transparent transition shadow-sm card-bg" style="color: var(--text-color);" onmouseover="this.style.borderColor='var(--accent-color)'" onmouseout="this.style.borderColor='transparent'">
                 <i class="fas fa-phone-alt text-green-500 text-2xl mr-4"></i>
-                <div><p class="text-xs text-gray-500">Call Us</p><p class="font-bold text-lg">7862043514</p></div>
+                <div><p class="text-xs" style="color: var(--text-secondary);">Call Us</p><p class="font-bold text-lg">7862043514</p></div>
             </a>
-            <a href="mailto:krushndevkant@gmail.com" class="flex items-center p-5 bg-gray-50 rounded-2xl border-2 border-transparent hover:border-blue-500 transition shadow-sm">
+            <a href="mailto:krushndevkant@gmail.com" class="contact-card flex items-center p-5 rounded-2xl border-2 border-transparent transition shadow-sm card-bg" style="color: var(--text-color);" onmouseover="this.style.borderColor='#3b82f6'" onmouseout="this.style.borderColor='transparent'">
                 <i class="fas fa-envelope text-blue-500 text-2xl mr-4"></i>
-                <div><p class="text-xs text-gray-500">Email Us</p><p class="font-bold text-lg">krushndevkant@gmail.com</p></div>
+                <div><p class="text-xs" style="color: var(--text-secondary);">Email Us</p><p class="font-bold text-lg">krushndevkant@gmail.com</p></div>
             </a>
-            <a href="https://wa.me/917862043514" class="flex items-center p-5 bg-green-600 text-white rounded-2xl shadow-lg transform hover:scale-105 transition">
+            <a href="https://wa.me/917862043514" class="contact-card flex items-center p-5 text-white rounded-2xl shadow-lg transform hover:scale-105 transition" style="background: #16a34a;">
                 <i class="fab fa-whatsapp text-3xl mr-4"></i>
                 <div><p class="text-xs opacity-80">Fast Response</p><p class="font-bold text-lg">Chat on WhatsApp</p></div>
             </a>
 
             <div class="pt-6">
-                <a href="images/offline_ads.pdf" download class="flex items-center justify-center gap-3 p-4 bg-orange-600 text-white rounded-2xl shadow-lg hover:bg-orange-700 transition font-bold uppercase tracking-wider">
+                <a href="images/offline_ads.pdf" download class="contact-card flex items-center justify-center gap-3 p-4 text-white rounded-2xl shadow-lg hover:opacity-90 transition font-bold uppercase tracking-wider" style="background: var(--accent-color);">
                     <i class="fas fa-file-pdf text-2xl"></i> Download Package Info
                 </a>
             </div>
         </div>
     </section>
 
-    <footer class="bg-gray-900 text-white pt-12 pb-6 px-4">
+    <footer class="pt-12 pb-6 px-4" style="background: #111827; color: white;">
         <div class="max-w-4xl mx-auto text-center">
-            <h3 class="text-xl font-bold mb-6 text-orange-400">Join Us on Social Media</h3>
+            <h3 class="text-xl font-bold mb-6" style="color: var(--accent-color);">Join Us on Social Media</h3>
             <div class="flex justify-center space-x-8 text-4xl mb-10">
-                <a href="https://www.instagram.com/krishna_adwala" class="hover:text-pink-500 transition"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/share/1EFvdHJczN/" class="hover:text-blue-500 transition"><i class="fab fa-facebook"></i></a>
-                <a href="https://youtube.com/@krishna_adwala07" class="hover:text-red-600 transition"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/krishna_adwala" class="social-icon hover:text-pink-500 transition"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/share/1EFvdHJczN/" class="social-icon hover:text-blue-500 transition"><i class="fab fa-facebook"></i></a>
+                <a href="https://youtube.com/@krishna_adwala07" class="social-icon hover:text-red-600 transition"><i class="fab fa-youtube"></i></a>
             </div>
-            <div class="bg-gray-800 p-6 rounded-2xl mb-8 border border-gray-700">
-                <p class="text-lg font-bold text-orange-400 mb-2"><i class="fas fa-map-marker-alt mr-2"></i>Main Branch Location</p>
-                <p class="text-gray-300">Borsad, Dist: Anand, Gujarat - 388540</p>
+            <div class="p-6 rounded-2xl mb-8 border" style="background: #1f2937; border-color: #374151;">
+                <p class="text-lg font-bold mb-2" style="color: var(--accent-color);"><i class="fas fa-map-marker-alt mr-2"></i>Main Branch Location</p>
+                <p style="color: #d1d5db;">Borsad, Dist: Anand, Gujarat - 388540</p>
             </div>
-            <p class="text-gray-500 text-sm">© 2026 Krishna Advertisement. Designed for Krushn Kant-kkr</p>
+            <p class="text-sm" style="color: #6b7280;">© 2026 Krishna Advertisement. Designed for Krushn Kant-kkr</p>
         </div>
     </footer>
 
@@ -269,6 +468,31 @@
                 el.parentElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('themeIcon');
+            const currentTheme = html.getAttribute('data-theme');
+
+            if (currentTheme === 'dark') {
+                html.removeAttribute('data-theme');
+                icon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                icon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            const icon = document.getElementById('themeIcon');
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                icon.className = 'fas fa-sun';
+            }
+        });
     </script>
 </body>
-</html>  
+</html>

@@ -7,51 +7,242 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-         .gallery-img { 
+        :root {
+            --bg-color: #f3f4f6;
+            --card-bg: #ffffff;
+            --text-color: #1f2937;
+            --text-secondary: #6b7280;
+            --border-color: #e5e7eb;
+            --accent-color: #f97316;
+            --accent-hover: #ea580c;
+            --nav-bg: #ffffff;
+            --footer-text: #9ca3af;
+            --shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --accent-color: #fb923c;
+            --accent-hover: #f97316;
+            --nav-bg: #1e293b;
+            --footer-text: #64748b;
+            --shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        .card-bg {
+            background-color: var(--card-bg);
+            transition: background-color 0.5s ease;
+        }
+
+        .nav-bg {
+            background-color: var(--nav-bg);
+            transition: background-color 0.5s ease;
+        }
+
+        /* 3D Animated Header Background */
+        .anim-bg {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .anim-bg::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: bgMove 20s linear infinite;
+        }
+
+        @keyframes bgMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-30px, -30px); }
+        }
+
+        /* 3D Floating Shapes */
+        .shape-3d {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(5px);
+            animation: float3d 6s ease-in-out infinite;
+        }
+
+        .shape-3d:nth-child(1) {
+            width: 80px; height: 80px;
+            top: 20%; left: 10%;
+            animation-delay: 0s;
+        }
+        .shape-3d:nth-child(2) {
+            width: 60px; height: 60px;
+            top: 60%; left: 80%;
+            animation-delay: 2s;
+        }
+        .shape-3d:nth-child(3) {
+            width: 100px; height: 100px;
+            top: 40%; left: 50%;
+            animation-delay: 4s;
+        }
+        .shape-3d:nth-child(4) {
+            width: 40px; height: 40px;
+            top: 10%; left: 70%;
+            animation-delay: 1s;
+        }
+
+        @keyframes float3d {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            33% { transform: translateY(-30px) rotate(120deg) scale(1.1); }
+            66% { transform: translateY(15px) rotate(240deg) scale(0.9); }
+        }
+
+        /* Gallery 3D Effects */
+        .gallery-img { 
             transition: all 0.5s ease-in-out; 
-            /* Height ko 300px se badha kar 450px ya auto kar sakte hain */
             height: 400px; 
             width: 100%;
-            /* 'cover' se image stretch nahi hogi aur pura box bhari dikhegi */
             object-fit: cover; 
             object-position: center;
             display: block;
         }
 
-        /* Image par hover karne par wo thodi zoom hogi */
+        .img-container {
+            overflow: hidden;
+            border-radius: 20px;
+            background-color: #000;
+            box-shadow: var(--shadow);
+            transform-style: preserve-3d;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .img-container:hover { 
+            transform: translateY(-15px) rotateX(5deg) scale(1.02);
+            box-shadow: 0 25px 50px rgba(249, 115, 22, 0.3);
+        }
+
         .img-container:hover .gallery-img { 
             transform: scale(1.08); 
         }
 
-        /* Container styling */
-        .img-container {
-            overflow: hidden;
-            border-radius: 20px;
-            background-color: #000; /* Loading ke waqt background black dikhega */
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        .overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .img-container:hover .overlay {
+            opacity: 1;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            background: var(--card-bg);
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            color: var(--text-color);
+        }
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(15deg);
+        }
+
+        /* Floating Animation */
+        .float-anim {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Pulse Ring */
+        .pulse-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.3);
+            animation: pulseRing 3s ease-out infinite;
+        }
+        @keyframes pulseRing {
+            0% { transform: scale(0.8); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        .cta-card {
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease;
+        }
+        .cta-card:hover {
+            transform: translateZ(30px) rotateX(2deg);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .anim-bg { min-height: 180px; }
+            .gallery-img { height: 280px; }
+            .shape-3d:nth-child(3) { width: 60px; height: 60px; }
         }
     </style>
+<base target="_blank">
 </head>
-<body class="bg-gray-100 font-sans">
+<body class="font-sans">
 
-    <nav class="bg-white shadow-md p-4 sticky top-0 z-50">
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/White Mode">
+        <i class="fas fa-moon" id="themeIcon"></i>
+    </button>
+
+    <nav class="nav-bg shadow-md p-4 sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-xl font-black text-orange-600">KRISHNA ADS</a>
-            <a href="index.html" class="bg-orange-600 text-white px-4 py-2 rounded-lg font-bold text-sm">
+            <a href="index.html" class="text-xl font-black" style="color: var(--accent-color);">KRISHNA ADS</a>
+            <a href="index.html" class="px-4 py-2 rounded-lg font-bold text-sm text-white" style="background: var(--accent-color);">
                 <i class="fas fa-home mr-2"></i>Back to Home
             </a>
         </div>
     </nav>
 
-    <header class="bg-gradient-to-r from-orange-500 to-red-600 py-12 text-center text-white shadow-inner">
-        <h1 class="text-4xl font-bold mb-2">Our Recent Work 🖼️</h1>
-        <p class="text-orange-100 px-4">Humne jo banners aur ads banaye hain, unki kuch jhalak yahan dekhein.</p>
-    </header>
+    <!-- 3D Animated Header Background -->
+    <div class="anim-bg">
+        <div class="shape-3d"></div>
+        <div class="shape-3d"></div>
+        <div class="shape-3d"></div>
+        <div class="shape-3d"></div>
+        <div class="pulse-ring" style="width: 100px; height: 100px; top: 30%; left: 45%;"></div>
+        <div class="relative z-10 text-center text-white px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-2 float-anim">Our Recent Work 🖼️</h1>
+            <p class="text-lg opacity-90">Humne jo banners aur ads banaye hain, unki kuch jhalak yahan dekhein.</p>
+        </div>
+    </div>
 
     <main class="container mx-auto px-4 py-12">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <div class="img-container relative overflow-hidden rounded-2xl shadow-xl bg-white border-2 border-transparent hover:border-orange-500 transition">
+
+            <div class="img-container relative overflow-hidden rounded-2xl border-2 border-transparent hover:border-orange-500 transition card-bg">
                 <img src="images/InShot_20260311_043812298.png" alt="Krishna Ad Work" class="gallery-img">
                 <div class="overlay absolute inset-0 flex items-center justify-center text-white text-center p-4">
                     <div>
@@ -61,7 +252,7 @@
                 </div>
             </div>
 
-            <div class="img-container relative overflow-hidden rounded-2xl shadow-xl bg-white border-2 border-transparent hover:border-orange-500 transition">
+            <div class="img-container relative overflow-hidden rounded-2xl border-2 border-transparent hover:border-orange-500 transition card-bg">
                 <img src="images/InShot_20260311_082602526.jpg" alt="Krishna Ad Work" class="gallery-img">
                 <div class="overlay absolute inset-0 flex items-center justify-center text-white text-center p-4">
                     <div>
@@ -71,7 +262,7 @@
                 </div>
             </div>
 
-            <div class="img-container relative overflow-hidden rounded-2xl shadow-xl bg-white border-2 border-transparent hover:border-orange-500 transition">
+            <div class="img-container relative overflow-hidden rounded-2xl border-2 border-transparent hover:border-orange-500 transition card-bg">
                 <img src="images/InShot_20260413_213048735.jpg" alt="Krishna Ad Work" class="gallery-img">
                 <div class="overlay absolute inset-0 flex items-center justify-center text-white text-center p-4">
                     <div>
@@ -81,7 +272,7 @@
                 </div>
             </div>
 
-            <div class="img-container relative overflow-hidden rounded-2xl shadow-xl bg-white border-2 border-transparent hover:border-orange-500 transition">
+            <div class="img-container relative overflow-hidden rounded-2xl border-2 border-transparent hover:border-orange-500 transition card-bg">
                 <img src="images/file_0000000060b871fa99bc1252fb1005e3.png" alt="Krishna Ad Work" class="gallery-img">
                 <div class="overlay absolute inset-0 flex items-center justify-center text-white text-center p-4">
                     <div>
@@ -91,7 +282,7 @@
                 </div>
             </div>
 
-            <div class="img-container relative overflow-hidden rounded-2xl shadow-xl bg-white border-2 border-transparent hover:border-orange-500 transition">
+            <div class="img-container relative overflow-hidden rounded-2xl border-2 border-transparent hover:border-orange-500 transition card-bg">
                 <img src="images/file_0000000061e472088ab070662fe07ca1.png" alt="Krishna Ad Work" class="gallery-img">
                 <div class="overlay absolute inset-0 flex items-center justify-center text-white text-center p-4">
                     <div>
@@ -101,7 +292,7 @@
                 </div>
             </div>
 
-            <div class="img-container relative overflow-hidden rounded-2xl shadow-xl bg-white border-2 border-transparent hover:border-orange-500 transition">
+            <div class="img-container relative overflow-hidden rounded-2xl border-2 border-transparent hover:border-orange-500 transition card-bg">
                 <img src="images/InShot_20260308_160717265.jpg" alt="Krishna Ad Work" class="gallery-img">
                 <div class="overlay absolute inset-0 flex items-center justify-center text-white text-center p-4">
                     <div>
@@ -113,19 +304,44 @@
 
         </div>
 
-        <div class="mt-16 text-center bg-white p-8 rounded-3xl shadow-lg max-w-2xl mx-auto">
-            <h3 class="text-2xl font-bold mb-4">Aapko bhi aisa hi kaam karwana hai?</h3>
-            <p class="text-gray-600 mb-6">Hamare packages dekhne ke liye home page par jayein ya direct WhatsApp karein.</p>
-            <a href="https://wa.me/917862043514" class="inline-block bg-green-600 text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-green-700 transition">
+        <div class="mt-16 text-center p-8 rounded-3xl shadow-lg max-w-2xl mx-auto cta-card card-bg" style="box-shadow: var(--shadow);">
+            <h3 class="text-2xl font-bold mb-4" style="color: var(--text-color);">Aapko bhi aisa hi kaam karwana hai?</h3>
+            <p class="mb-6" style="color: var(--text-secondary);">Hamare packages dekhne ke liye home page par jayein ya direct WhatsApp karein.</p>
+            <a href="https://wa.me/917862043514" class="inline-block text-white px-8 py-3 rounded-full font-bold text-lg hover:opacity-90 transition" style="background: #16a34a;">
                 <i class="fab fa-whatsapp mr-2"></i>Book Now
             </a>
         </div>
     </main>
 
-    <footer class="py-8 text-center text-gray-500 border-t mt-10">
+    <footer class="py-8 text-center border-t mt-10" style="color: var(--footer-text);">
         <p>© 2026 Krishna Advertisement | Borsad</p>
     </footer>
 
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('themeIcon');
+            const currentTheme = html.getAttribute('data-theme');
+
+            if (currentTheme === 'dark') {
+                html.removeAttribute('data-theme');
+                icon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                icon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            const icon = document.getElementById('themeIcon');
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                icon.className = 'fas fa-sun';
+            }
+        });
+    </script>
 </body>
-              </html>
-                      
+</html>
